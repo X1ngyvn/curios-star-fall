@@ -1,98 +1,42 @@
-# Modrinth 发布文本
+# Modrinth 发布清单
 
-## 一、项目字段（创建项目时逐项填写）
+> 正文（Description）单独放在 [`modrinth-description.md`](modrinth-description.md)，中英双语，直接整份粘贴即可。
 
-| 字段 | 建议填写 |
+## 一、创建项目（Create a project）
+
+| 字段 | 填写 |
 | --- | --- |
-| Project name | `Star Fall`（不要写 `curios-star-fall`，页面上方提示避免把类别/前置名塞进项目名） |
-| Slug | `star-fall` |
-| Summary（**必须英文**，≤256 字符） | `Grow your Curios accessory slots over time: right-click Star Fall, then gain a configurable number of native slots every in-game day.` |
-| Class（页面上的 Class 字段） | `Mod` |
-| License | `All Rights Reserved` |
-| Client side | `required` |
-| Server side | `required` |
+| Project name | `Star Fall`（不要用 `curios-star-fall`，项目名里别塞前置模组名/类别） |
+| Slug | 自动生成 `star-fall`，可手动改成 `star-fall` |
+| Logo | 512×512 的 `star-fall-logo-512.png`（最近邻放大的像素图，别用 16×16 直接上传，会被插值糊掉） |
+| Summary（**必须英文**，≤256 字符） | `Grow your Curios accessory slots over time: right-click Star Fall, then gain a configurable number of native slots every in-game day.`（131 字符） |
+| Class | `Mod` |
 | Main category | `Equipment` |
 | Additional categories | `Game Mechanics`、`Adventure` |
-| Allow Comments | 勾选（否则玩家只能去 Issues 反馈） |
-| Unlisted | 不勾 |
-| Tags / Loaders | `Forge` |
-| Game versions | `1.20.1` |
-| Links | Source / Issues 填仓库地址；Wiki 可留空 |
-| Dependencies | 必填依赖：`Curios API`（version range `>=5.7.0`） |
+| Allow Comments | ☑ 勾选 |
+| Unlisted | ☐ 不勾 |
 
-## 二、Description（直接粘贴到 Description 编辑器，Markdown）
+## 二、项目设置（Settings）
 
-```markdown
-# Star Fall · 星陨饰品栏
-
-> 用一颗「星陨」开启成长：每过一个游戏日，Curios 饰品栏就多一点。
-
-它不新增花哨的饰品，而是接管**栏位数量**本身——让玩家的饰品栏随生存天数一点点长出来，并且可以精确安排「第几天、加几个、加哪种栏位」。
-
-## 玩法流程
-
-1. 击杀末影龙拿到龙蛋，用 **4 个下界之星 + 1 个龙蛋**（十字摆放，龙蛋居中）合成 **星陨 / Star Fall**
-2. 右键使用：物品消耗，解锁史诗成就 **「渐强」**，从当天起开始计时
-3. 每过一个游戏日，聊天栏提示 `渐强:饰品栏+1(累计1)`，对应原生饰品栏 +1 格
-4. 想要「什么都能装」的通用栏位时，用 `/dailyslot convert @s curio 1` 把原生栏位换成通用位
-
-未使用星陨的玩家不会获得任何栏位，也不会累计天数。
-
-## 发放的是「原生」栏位
-
-`head` `necklace` `ring` `belt` `body` `charm` `hands` `bracelet` `curio`
-
-因此 GUI 图标、物品提示、死亡掉落规则、属性加成结算、客户端同步，全部沿用 Curios 自身逻辑，与其他饰品模组没有任何行为差异。另有一个本模组自建的通用栏位 `daily_curio`（可放任意物品，需手动转换获得）。
-
-## 配置
-
-`config/curios-star-fall-common.toml`
-
-```toml
-# 里程碑：到第 N 天一次性发放（默认空）
-milestones = []
-
-[general]
-	intervalDays = 1        # 每几个游戏日发放一次；0 = 关闭
-	slotsPerGrant = 1       # 每次几个
-	defaultSlot = "curio"   # 每日发放的栏位类型
-	maxSlotsPerType = 32    # 每种栏位发放上限；0 = 不限
-	announce = true
-```
-
-想做到「第 7 天 +1 戒指、第 30 天 +2 项链」直接写：
-
-```toml
-milestones = ["day=7;slot=ring;count=1", "day=30;slot=necklace;count=2"]
-```
-
-## 命令
-
-需要权限等级 2（单人开作弊 / 服务器 OP）。
-
-| 命令 | 说明 |
+| 字段 | 填写 |
 | --- | --- |
-| `/dailyslot status` | 查看配置、激活状态与自己的栏位 |
-| `/dailyslot set <天> <数量> [栏位]` | 修改每日规则（写回配置文件） |
-| `/dailyslot rule add\|remove\|list` | 管理里程碑 |
-| `/dailyslot grant <目标> <栏位> <数量>` | 立即补发 |
-| `/dailyslot convert <目标> <原栏位> <数量>` | 原生栏位 → 通用栏位 |
-| `/dailyslot sync <目标>` | 重新同步栏位数量 |
-| `/dailyslot reset <目标>` | 清空发放的栏位（栏内物品会掉落） |
+| Environment → Client | `required` |
+| Environment → Server | `required` |
+| Loaders | `Forge` |
+| Game versions | `1.20.1` |
+| License | `All Rights Reserved` |
+| Links → Source | `https://github.com/X1ngyvn/curios-star-fall` |
+| Links → Issues | `https://github.com/X1ngyvn/curios-star-fall/issues` |
+| Dependencies | `Curios` → **Required**，version `>=5.7.0` |
 
-## 兼容性
+## 三、Description
 
-- Minecraft 1.20.1 / Forge 47.x
-- Curios API 5.7.0+，已在 **5.12.1 / 5.14.1** 实测
-- 与其他增加 Curios 栏位的模组共存：本模组只做 `Math.max` 式合并，不会覆盖更大的数值
-- 旧版本存档数据自动迁移
+编辑器右上角把 `WYSIWYG` 切换成 **Markdown**（或点 `</>`），然后把
+[`modrinth-description.md`](modrinth-description.md) 的**全部内容**粘进去。
 
-## 授权
+结构：英文正文（What it does / How it works / Native slots / Configuration / Commands / Compatibility）→ 中文说明 → 仓库链接。
 
-All Rights Reserved。整合包可直接收录本模组的未修改 jar。
-```
-
-## 三、版本（Create a version）
+## 四、版本（Create a version）
 
 | 字段 | 填写 |
 | --- | --- |
@@ -101,23 +45,35 @@ All Rights Reserved。整合包可直接收录本模组的未修改 jar。
 | Release channel | `Release` |
 | Game versions | `1.20.1` |
 | Loaders | `Forge` |
-| Dependencies | `Curios API` → `required`，version `>=5.7.0` |
+| Dependencies | `Curios API` → `required`，`>=5.7.0` |
 | File | `curios-star-fall-1.3.0.jar` |
-| Changelog | 见下 |
+
+Changelog：
 
 ```markdown
-- 更名为 Star Fall / 星陨饰品栏，modId 改为 curios_starfall
-- 物品 id 改为 curios_starfall:star_fall，配置文件改为 config/curios-star-fall-common.toml
-- 适配 Curios 5.14.1（仍兼容 5.12.1）
-- 新增史诗成就「渐强」，使用星陨激活时解锁
-- 发放提示改为 `渐强:饰品栏+1(累计1)` 格式
-- 旧存档数据自动迁移
+- Renamed to Star Fall / 星陨饰品栏, mod id is now `curios_starfall`
+- Item id is now `curios_starfall:star_fall`; config moved to `config/curios-star-fall-common.toml`
+- Tested against Curios 5.14.1 (still compatible with 5.12.1)
+- New challenge advancement "Crescendo", unlocked by activating Star Fall
+- Slot grant message is now `渐强:饰品栏+1(累计1)`
+- Native slot base sizes are no longer overridden — Curios defaults are kept
+- Legacy save data migrates automatically
 ```
 
-## 四、发布前检查清单
+## 五、截图（Gallery）
 
-- [ ] `mods.toml` 的 version 与文件名一致（1.3.0）
-- [ ] jar 内没有 `.build/`、`build/`、旧版 class 残留
-- [ ] 上传的 jar 与实际测试跑通的版本一致（md5 对齐）
-- [ ] Dependencies 里挂上 Curios，否则玩家会带着 `curios` 缺失崩溃
-- [ ] 截图：Curios 界面多出来的栏位、星陨物品与合成表、成就弹窗
+建议顺序：
+
+1. Curios 界面：激活前后栏位对比（最能说明卖点）
+2. 合成表：4 下界之星 + 龙蛋
+3. 聊天栏提示 `渐强:饰品栏+1(累计1)`
+4. 成就「渐强」解锁弹窗
+5. 配置文件截图
+
+## 六、发布前检查
+
+- [ ] Summary 是英文（平台硬性要求），中文放在 Description 里
+- [ ] Logo 不是纯色/渐变，也不是游戏原图
+- [ ] Dependencies 挂了 Curios，否则玩家会在缺前置时崩溃
+- [ ] 上传的 jar 与本地跑通的版本一致（比对 md5）
+- [ ] 版本号 / 文件名 / mods.toml 三者一致（都是 1.3.0）
