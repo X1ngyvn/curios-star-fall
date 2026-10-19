@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+[[mods]]
+modId="curios_starfall"
+version="1.3.0"
+displayName="星陨饰品栏"
+authors="AutoMods"
+description='''Star Fall / 星陨：按天数自动发放 Curios 原生栏位（curio/ring/necklace/...），默认每天 +1 个原生 curio 栏位。
+需先用物品「星陨 / Star Fall」（4 个下界之星 + 龙蛋合成，右键使用）激活，并解锁史诗成就「渐强」；
+支持用 milestones 配置「第 a 天 +x 个、第 b 天 +y 个」；本模组的通用栏位需用 /dailyslot convert 手动转换。
+配置：config/curios-star-fall-common.toml，游戏内用 /dailyslot 修改。'''
+[[dependencies.curios_starfall]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.curios_starfall]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="BOTH"
+[[dependencies.curios_starfall]]
+modId="curios"
+mandatory=true
+versionRange="[5.7.0,)"
+ordering="AFTER"
+side="BOTH"

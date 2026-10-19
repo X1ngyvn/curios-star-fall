@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "curios_starfall:star_fall"
+    },
+    "title": {
+      "translate": "advancements.curios_starfall.star_fall_activate.title"
+    },
+    "description": {
+      "translate": "advancements.curios_starfall.star_fall_activate.description"
+    },
+    "frame": "challenge",
+    "background": "minecraft:textures/gui/advancements/backgrounds/end.png",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "activate": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}
