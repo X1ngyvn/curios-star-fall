@@ -4,15 +4,17 @@
 
 | 字段 | 建议填写 |
 | --- | --- |
-| Project name | `Star Fall` |
+| Project name | `Star Fall`（不要写 `curios-star-fall`，页面上方提示避免把类别/前置名塞进项目名） |
 | Slug | `star-fall` |
-| Summary（≤256 字符） | `用「星陨」开启成长：每过一个游戏日，你的 Curios 饰品栏就多一点。天数、数量、栏位类型全部可配置，并附带史诗成就「渐强」。` |
-| Project type | `Mod` |
+| Summary（**必须英文**，≤256 字符） | `Grow your Curios accessory slots over time: right-click Star Fall, then gain a configurable number of native slots every in-game day.` |
+| Class（页面上的 Class 字段） | `Mod` |
 | License | `All Rights Reserved` |
 | Client side | `required` |
 | Server side | `required` |
-| Categories | `Equipment`、`Game Mechanics`、`Adventure` |
-| Additional categories | `Management`（可选，服务器向） |
+| Main category | `Equipment` |
+| Additional categories | `Game Mechanics`、`Adventure` |
+| Allow Comments | 勾选（否则玩家只能去 Issues 反馈） |
+| Unlisted | 不勾 |
 | Tags / Loaders | `Forge` |
 | Game versions | `1.20.1` |
 | Links | Source / Issues 填仓库地址；Wiki 可留空 |
