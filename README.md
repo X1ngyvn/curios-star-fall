@@ -191,23 +191,6 @@ src/main/resources/
 </details>
 
 <details>
-<summary><b>开局会有多少个饰品栏？</b></summary>
-
-9 种原生栏位各 1 格（Curios 定义的默认容量，本模组不修改），通用位 `daily_curio` 为 0（需要 convert 才有）。
-之后的每日发放与里程碑都在这个基础上叠加，不会替换或压缩原有数量。
-
-另外：如果整合包里别的模组也把同一批栏位挂到了玩家身上，取较大值合并，不会重复计数。
-
-</details>
-
-<details>
-<summary><b>能放进任意物品的栏位在哪？</b></summary>
-
-通用位 `daily_curio` 默认不发放，用 `/dailyslot convert @s curio 1` 从原生栏位换过去。
-
-</details>
-
-<details>
 <summary><b>和别的饰品模组冲突吗？</b></summary>
 
 不会。本模组只通过 Curios 公开 API 增加栏位修饰符，与 `/curios add` 是同一套机制。
